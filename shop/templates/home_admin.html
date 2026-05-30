@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard - TechShop{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Admin Dashboard</h1>
+            <a href="{% url 'add_product' %}" class="btn btn-success mb-3">+ Add Product</a>
+            <a href="{% url 'add_category' %}" class="btn btn-primary mb-3">+ Add Category</a>
+        </div>
+    </div>
+
+    <!-- Products Table -->
+    <div class="row">
+        <div class="col-12">
+            <h3>Products</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category.name }}</td>
+                            <td>₹{{ product.price }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>
+                                <a href="{% url 'product_edit' product.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{% url 'product_delete' product.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center">No products yet</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Table -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Categories</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Products Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.product_set.count }}</td>
+                            <td>
+                                <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('Delete category and all products?')">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No categories yet</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

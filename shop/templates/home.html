@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Home - TechShop{% endblock %}
+{% block content %}
+<!-- Hero with Company Logo -->
+<div class="hero py-5 mb-5 text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 70vh; display: flex; align-items: center;">
+    <div class="container">
+        <!-- Enhanced Company Logo (BIG + Attractive) -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 col-lg-6">
+                {% load static %}
+                <div class="logo-container p-4 rounded-5 shadow-lg" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <img src="{% static 'logo.png' %}" 
+                         alt="TechShop Logo" 
+                         class="img-fluid rounded-4 shadow-xl" 
+                         style="max-height: 280px; width: auto; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));">
+                </div>
+            </div>
+        </div>
+        <div class="text-white">
+            <h1 class="display-2 fw-bold mb-4 animate__animated animate__fadeInUp" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Welcome to TechShop</h1>
+            <p class="lead fs-2 mb-5 animate__animated animate__fadeInUp animate__delay-1s" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Premium Computers & Electronics at Best Prices</p>
+            <a href="{% url 'products' %}" class="btn btn-light btn-lg px-5 py-3 fs-5 animate__animated animate__pulse animate__infinite animate__delay-2s">
+                Shop Now <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Featured Products Marquee -->
+<div class="container mb-5">
+    <h2 class="text-center mb-5">Featured Products</h2>
+    {% if products %}
+    <div class="marquee-container overflow-hidden py-4 bg-light rounded-4 shadow">
+        <div class="marquee-wrapper">
+            <!-- First set of products -->
+            <div class="d-flex gap-4 flex-nowrap">
+                {% for product in products %}
+                <div class="product-card flex-shrink-0" style="width: 280px;">
+                    <div class="card h-100 shadow border-0">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                        {% else %}
+                        <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-laptop fa-3x text-white-50"></i>
+                        </div>
+                        {% endif %}
+                        <div class="card-body p-3 d-flex flex-column">
+                            <h6 class="card-title">{{ product.name|truncatechars:25 }}</h6>
+                            <p class="card-text small flex-grow-1">{{ product.description|truncatewords:10 }}</p>
+                            <div class="d-flex justify-content-between align-items-end mt-auto">
+                                <h5 class="text-danger mb-0">₹{{ product.price }}</h5>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'add_to_cart' product.pk %}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-shopping-cart"></i> Cart
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Duplicate set for seamless infinite loop -->
+            <div class="d-flex gap-4 flex-nowrap">
+                {% for product in products %}
+                <div class="product-card flex-shrink-0" style="width: 280px;">
+                    <div class="card h-100 shadow border-0">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                        {% else %}
+                        <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-laptop fa-3x text-white-50"></i>
+                        </div>
+                        {% endif %}
+                        <div class="card-body p-3 d-flex flex-column">
+                            <h6 class="card-title">{{ product.name|truncatechars:25 }}</h6>
+                            <p class="card-text small flex-grow-1">{{ product.description|truncatewords:10 }}</p>
+                            <div class="d-flex justify-content-between align-items-end mt-auto">
+                                <h5 class="text-danger mb-0">₹{{ product.price }}</h5>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'add_to_cart' product.pk %}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-shopping-cart"></i> Cart
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-box-open fa-5x text-muted mb-4"></i>
+        <p class="lead text-muted">No products available</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
