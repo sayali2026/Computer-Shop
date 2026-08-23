@@ -76,7 +76,10 @@ Computer-Shop/
 
 
 
+
 ## 👩‍💻 Author
 
 **Sayali** — [GitHub Profile](https://github.com/sayali2026)
+
+⭐ Show Support If you like this project, give it a ⭐ on GitHub!
 
