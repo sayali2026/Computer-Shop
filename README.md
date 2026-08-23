@@ -1,95 +1,82 @@
-🖥️ Computer Shop Management System
+# 🖥️ Computer Shop Management System
 
-A full-stack web application built using Django, Python, HTML, CSS, and JavaScript for managing a computer shop with product listings, user authentication, and admin control panel.
+A Django-based web application for managing computer shop operations — including user authentication, product management, a shopping cart system, and an admin dashboard.
 
-📌 About the Project
+---
 
-This project is a Django-based e-commerce system designed for a computer shop. It allows users to browse products, manage a shopping cart, and place orders, while admins can manage products and users through the Django admin panel.
+## 📋 About the Project
 
-🚀 Features
-🔐 User Registration & Login System
+This project simulates a real-world e-commerce workflow for a computer hardware/accessories shop. It allows customers to browse products, add them to a cart, and checkout, while giving admins full control over inventory and orders through a dedicated dashboard.
 
-🛒 Shopping Cart Functionality
+---
 
-📦 Product Management (Add / Update / Delete)
+## ✨ Features
 
-🧑‍💼 Admin Dashboard
+- 🔐 **User Authentication** — Register, log in, and manage customer accounts securely
+- 🛒 **Cart System** — Add, update, and remove products from the shopping cart
+- 📦 **Product Management** — Add, edit, and organize product listings
+- 🧑‍💼 **Admin Dashboard** — Manage users, products, and orders from a central panel
+- 💾 **SQLite Database** — Lightweight, file-based storage for easy setup
 
-🖼️ Media Upload Support (Product Images)
+---
 
-🎨 Responsive UI using HTML, CSS, Bootstrap
+## 🛠️ Tech Stack
 
-⚡ Secure backend using Django framework
+| Layer | Technology |
+|---|---|
+| Backend | Python, Django |
+| Frontend | HTML, CSS, JavaScript |
+| Database | SQLite |
 
-🛠️ Tech Stack
-Frontend: HTML, CSS, JavaScript, Bootstrap
+---
 
-Backend: Python, Django
+## 🚀 Getting Started
 
-Database: SQLite (default Django DB)
+### Prerequisites
+- Python 3.x installed
+- pip package manager
 
-Tools: Git, GitHub
+### Installation
 
-📁 Project Structure
-computer_shop/
-│
-
-├── shop/                  # Main application
-
-├── templates/             # HTML templates
-
-├── static/                # CSS, JS files
-
-├── media/                 # Uploaded images (ignored in GitHub)
-
-├── db.sqlite3             # Database (ignored in GitHub)
-
-├── manage.py
-
-└── requirements.txt
+```bash
 
 
-⚙️ Installation & Setup
-1. Clone the repository
-git clone https://github.com/your-username/Computer-Shop.git
-cd Computer-Shop
-
-3. Create virtual environment
+# Create a virtual environment
 python -m venv venv
-venv\Scripts\activate   # Windows
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-5. Install dependencies 
+# Install dependencies
 pip install -r requirements.txt
 
-7. Run migrations
+# Apply migrations
 python manage.py migrate
 
-9. Start development server
+# Run the development server
 python manage.py runserver
-🔐 Admin Panel
+```
 
-To access admin panel:
+Then open `http://127.0.0.1:8000/` in your browser.
 
-python manage.py createsuperuser
+---
 
-Then go to:
+## 📁 Project Structure
 
-http://127.0.0.1:8000/admin
+```
+Computer-Shop/
+├── manage.py
+├── requirements.txt
+├── shop_app/          # Core app: models, views, templates
+├── static/            # CSS, JS, images
+└── templates/         # HTML templates
+```
 
-⚠️ Important Notes
-.env file is used for secret keys (not uploaded to GitHub)
-db.sqlite3 and media/ folders are ignored for security
-Project is in development mode (DEBUG=True)
-👨‍💻 Author
+> 💡 Update this to match your actual folder layout.
 
-Sayali
-Student Developer | Django Enthusiast
+---
 
-📌 Future Improvements
-Payment gateway integration
-Advanced search & filters
-Order tracking system
-Deployment on cloud (Render / PythonAnywhere)
 
-⭐ Show Support
-If you like this project, give it a ⭐ on GitHub!
+
+## 👩‍💻 Author
+
+**Sayali** — [GitHub Profile](https://github.com/sayali2026)
+
