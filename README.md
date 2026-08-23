@@ -65,12 +65,10 @@ Then open `http://127.0.0.1:8000/` in your browser.
 Computer-Shop/
 ├── manage.py
 ├── requirements.txt
-├── shop_app/          # Core app: models, views, templates
-├── static/            # CSS, JS, images
+├── shop/          # Core app: models, views, templates
+├── static/css/            # CSS, JS, images
 └── templates/         # HTML templates
 ```
-
-> 💡 Update this to match your actual folder layout.
 
 ---
 
